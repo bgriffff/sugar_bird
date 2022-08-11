@@ -4,7 +4,9 @@ let app = express();
 
 let path = require("path");
 
-const port = process.env.PORT || 3001;
+const port = 3000;
+
+// const port = process.env.PORT || 3001;
 // const knex = require(path.join(__dirname + '/knex/knex.js'));
 
 app.set('view engine', 'ejs');
@@ -28,16 +30,29 @@ app.get("/", (req,res) => {
 
 app.post("/", (req,res) =>{
     knex("sugar_bird").insert({
-        name: req.body.name.toUpperCase(),
-        num_standard: req.body.num_standard,
-        cookie_detail_stan: req.body.cookie_detail_stan,
-        num_large: req.body.num_large,
-        cookie_detail_large: req.body.cookie_detail_large,
-        description: req.body.description,
-        date: req.body.date,
-        num_hours: req.body.num_hours,
-    }).then(cookies =>{
-        res.redirect("/");
+        pickup_date: req.body.pickup_date,
+        first_name: req.body.first_name.toUpperCase(),
+        last_name: req.body.last_name.toUpperCase(),
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        num_cookies: req.body.num_cookies,
+        event: req.body.event,
+        theme: req.body.theme,
+        colors: req.body.colors,
+        personalization: req.body.personalization,
+        questions: req.body.questions,
+        notes: req.body.notes,
+    }).then(sugar_bird =>{
+        res.redirect("/orders");
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+});
+
+app.get("/orders", (req, res) => {
+    knex.select().from("sugar_bird").then(new_order => {
+        res.render("orders", {sugar_bird : new_order});
     }).catch(err => {
         console.log(err);
         res.status(500).json({err});

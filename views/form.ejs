@@ -13,12 +13,24 @@
 <body class="cookie">
     <form action="/" method="POST">
         <div class="card">
-            <h1>Order</h1>
-            <label for="pickup_date">Pickup Date:</label><br>
+            <h1>Sugar Bird</h1>
+            <h3>Custom Cookie Order Request</h3>
+            <div>
+                <p>Once I receive your request, I will send you a quote/confirmation via email or text within 24 hours.</p>
+            </div>
+            <br>
+            <h2>Meet Allison Griffiths</h2>
+            <p>I love making cookies! I do seasonal orders as well as custom requests. Please give me at least 2 weeks to complete your order. If I need clarification I will text/email you.</p>
+            <br>
+            <h2>Pickup date</h2>
+            <div>
+                <p>Please note that submitting this form doesn’t guarantee a date.</p>
+            </div>
+            <label for="pickup_date">Pickup Date</label><br>
             <input type="date" id="pickup_date" name="pickup_date">
             <br>
             <br>
-            <h1>Contact info</h1>
+            <h2>Contact info</h2>
             <legend>First name</legend>
             <input type="text" id="first_name" name="first_name">
             <br>
@@ -27,7 +39,7 @@
             <input type="text" id="last_name" name="last_name">
             <br>
             <br> 
-            <legend>email</legend>
+            <legend>Email</legend>
             <input type="text" id="email" name="email">
             <br>
             <br>
@@ -35,26 +47,31 @@
             <input type="number" id="phone_number" name="phone_number">
             <br>
             <br>
-            <h1>Contact info</h1>
+            <h2>Order details</h2>
             <legend>How many cookies </legend>
-            <input type="number" id="num_cookies" name="num_cookies">
+            <input type="number" id="num_cookies" name="num_cookies" min=12>
             <br>
             <br>
             <legend>Event </legend>
-            <input type="number" id="event" name="event">
+            <input type="text" id="event" name="event">
             <br>
             <br>
+            <legend>Theme </legend>
+            <input type="text" id="theme" name="theme">
             <br>
             <br>
-            <label for="description">Describe the detail they want for the large cookies.</label><br>
-            <input type="textarea" id="description" name="description">
+            <legend>Color </legend>
+            <input type="text" id="color" name="color">
             <br>
             <br>
-            <legend>When are these cookies being picked up? </legend>
-            <input type="text" id="date" name="date" min="2022-04-30">
+            <label for="personalization">Wording or personalization</label><br>
+            <input type="textarea" id="personalization" name="personalization">
             <br>
             <br>
-            
+            <legend>Questions/comments </legend>
+            <input type="textarea" id="questions" name="questions">
+            <br>
+            <br>
             <button type="submit">Save</button>
         </div>
     </form>

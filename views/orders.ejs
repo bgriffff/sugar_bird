@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Order List</title>
+</head>
+<body>
+    <table class="customers">
+        <thead>
+            <tr>
+                <th style="text-align: left;">Pickup Date</th>
+                <th style="text-align: left;">First Name</th>
+                <th style="text-align: left;">Last Name</th>
+                <th style="text-align: left;">Email</th>
+                <th style="text-align: left;">Phone number</th>
+                <th style="text-align: left;">Number of cookies</th>
+                <th style="text-align: left;">Event</th>
+                <th style="text-align: left;">Theme</th>
+                <th style="text-align: left;">Colors</th>
+                <th style="text-align: left;">Personalizations</th>
+                <th style="text-align: left;">questions</th>
+                <th style="text-align: left;">notes</th>
+            </tr>
+        </thead>
+        <tbody style="font-family: Arial, Helvetica, sans-serif; font-size: 9px;">
+            <% for(let iCount = 0; iCount < sugar_bird.length; iCount++) 
+            { %>
+                <tr>
+                    <td><%= sugar_bird[iCount].pickup_date %></td>
+                    <td><%= sugar_bird[iCount].first_name %></td>
+                    <td><%= sugar_bird[iCount].last_name %></td>
+                    <td><%= sugar_bird[iCount].email %></td>
+                    <td><%= sugar_bird[iCount].phone_number %></td>
+                    <td><%= sugar_bird[iCount].num_cookies %></td>
+                    <td><%= sugar_bird[iCount].event %></td>
+                    <td><%= sugar_bird[iCount].theme %></td>
+                    <td><%= sugar_bird[iCount].colors %></td>
+                    <td><%= sugar_bird[iCount].personalization %></td>
+                    <td><%= sugar_bird[iCount].questions %></td>
+                    <td><%= sugar_bird[iCount].notes %></td>
+                    <td>
+                        <form action="/edit/<%= sugar_bird[iCount].order_id %>" method="GET">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete/<%= sugar_bird[iCount].order_id %>" method="POST">
+                            <button type="submit">Delete</button>
+                        </form>
+                </tr>    
+            <% } %>
+        </tbody>
+        <br>
+        <br>
+    </table>
+    <form action="/add" method="GET">
+        <br>
+        <br>
+        <button type="submit">Add an Order</button>
+    </form>
+
+    <form action="/sortDate" method="GET">
+        <br>
+        <br>
+        <button type="submit">Sort by Date</button>
+    </form>
+
+    <form action="/sortName" method="GET">
+        <br>
+        <br>
+        <button type="submit">Sort by Name</button>
+    </form>
+</body>
+</html>
