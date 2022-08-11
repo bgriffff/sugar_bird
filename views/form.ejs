@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Order</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="cookie">
+    <form action="/" method="POST">
+        <div class="card">
+            <h1>Order</h1>
+            <label for="pickup_date">Pickup Date:</label><br>
+            <input type="date" id="pickup_date" name="pickup_date">
+            <br>
+            <br>
+            <h1>Contact info</h1>
+            <legend>First name</legend>
+            <input type="text" id="first_name" name="first_name">
+            <br>
+            <br> 
+            <legend>Last name</legend>
+            <input type="text" id="last_name" name="last_name">
+            <br>
+            <br> 
+            <legend>email</legend>
+            <input type="text" id="email" name="email">
+            <br>
+            <br>
+            <legend>Phone number</legend>
+            <input type="number" id="phone_number" name="phone_number">
+            <br>
+            <br>
+            <h1>Contact info</h1>
+            <legend>How many cookies </legend>
+            <input type="number" id="num_cookies" name="num_cookies">
+            <br>
+            <br>
+            <legend>Event </legend>
+            <input type="number" id="event" name="event">
+            <br>
+            <br>
+            <br>
+            <br>
+            <label for="description">Describe the detail they want for the large cookies.</label><br>
+            <input type="textarea" id="description" name="description">
+            <br>
+            <br>
+            <legend>When are these cookies being picked up? </legend>
+            <input type="text" id="date" name="date" min="2022-04-30">
+            <br>
+            <br>
+            
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</body>
+</html>
