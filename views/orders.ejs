@@ -45,8 +45,8 @@
                     <td><%= sugar_bird[iCount].questions %></td>
                     <td><%= sugar_bird[iCount].notes %></td>
                     <td>
-                        <form action="/edit/<%= sugar_bird[iCount].order_id %>" method="GET">
-                            <button type="submit">Edit</button>
+                        <form action="/view/<%= sugar_bird[iCount].order_id %>" method="GET">
+                            <button type="submit">view</button>
                         </form>
                     </td>
                     <td>
@@ -59,22 +59,6 @@
         <br>
         <br>
     </table>
-    <form action="/add" method="GET">
-        <br>
-        <br>
-        <button type="submit">Add an Order</button>
-    </form>
 
-    <form action="/sortDate" method="GET">
-        <br>
-        <br>
-        <button type="submit">Sort by Date</button>
-    </form>
-
-    <form action="/sortName" method="GET">
-        <br>
-        <br>
-        <button type="submit">Sort by Name</button>
-    </form>
 </body>
 </html>

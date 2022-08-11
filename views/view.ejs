@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Order</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="cookie">
+    <form action="/view" method="POST">
+        <div class="card">
+            <h1 id="order_id" name="order_id">Request #<%= sugar_bird[0].order_id %></h1>
+            <p><b>Pickup Date:</b> <%= sugar_bird[0].pickup_date %></p>
+            <h2>Contact info</h2>
+            <p><b>Name:</b> <%= sugar_bird[0].first_name %> <%= sugar_bird[0].last_name %></p>
+
+            <p><b>Email:</b> <%= sugar_bird[0].email %></p>
+
+            <p><b>Phone Number:</b> <%= sugar_bird[0].phone_number %></p>
+
+            <h2>Order details</h2>
+            <p><b># Cookies:</b> <%= sugar_bird[0].num_cookies %></p>
+
+            <p><b>Event:</b> <%= sugar_bird[0].event %></p>
+
+            <p><b>Color:</b> <%= sugar_bird[0].color %></p>
+
+            <p><b>Wording or personalization:</b> <%= sugar_bird[0].personalization %></p>
+
+            <p><b>Questions/comments:</b> <%= sugar_bird[0].questions %></p>
+
+            <legend>Notes: </legend>
+            <input type="textarea" id="notes" name="notes" value="<%= sugar_bird[0].notes %>">
+            <br>
+            <br>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</body>
+</html>
