@@ -55,7 +55,7 @@ app.get("/thanks", (req,res) => {
 });
 
 app.get("/orders", (req, res) => {
-    knex.select().from("sugar_bird").then(new_order => {
+    knex.select().from("sugar_bird").orderBy("pickup_date").then(new_order => {
         res.render("orders", {sugar_bird : new_order});
     }).catch(err => {
         console.log(err);
@@ -88,6 +88,16 @@ app.post("/view", (req,res) =>{
         // questions: req.body.questions,
         notes: req.body.notes,
     }).then(sugar_bird =>{
+        res.redirect("/orders");
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+});
+
+
+app.post("/delete/:id", (req, res) => {
+    knex("sugar_bird").where("order_id", req.params.id).del().then(sugar_bird => {
         res.redirect("/orders");
     });
 });

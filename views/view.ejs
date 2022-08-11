@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="cookie">
-    <form action="/view" method="POST">
+    
         <div class="card">
             <h1 id="order_id" name="order_id">Request #<%= sugar_bird[0].order_id %></h1>
+
             <p><b>Pickup Date:</b> <%= sugar_bird[0].pickup_date %></p>
             <h2>Contact info</h2>
             <p><b>Name:</b> <%= sugar_bird[0].first_name %> <%= sugar_bird[0].last_name %></p>
@@ -33,12 +34,19 @@
 
             <p><b>Questions/comments:</b> <%= sugar_bird[0].questions %></p>
 
+    <form action="/view" method="POST">
+            <input type="hidden" id="order_id" name="order_id" value="<%= sugar_bird[0].order_id %>">
             <legend>Notes: </legend>
             <input type="textarea" id="notes" name="notes" value="<%= sugar_bird[0].notes %>">
             <br>
             <br>
             <button type="submit">Save</button>
         </div>
+    </form>
+    <form action="/orders" method="GET">
+        <br>
+        <br>
+        <button type="submit">back</button>
     </form>
 </body>
 </html>
