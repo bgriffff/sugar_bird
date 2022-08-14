@@ -9,44 +9,152 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body class="cookie">
     
-        <div class="card">
-            <h1 id="order_id" name="order_id">Request #<%= sugar_bird[0].order_id %></h1>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-            <p><b>Pickup Date:</b> <%= sugar_bird[0].pickup_date %></p>
-            <h2>Contact info</h2>
-            <p><b>Name:</b> <%= sugar_bird[0].first_name %> <%= sugar_bird[0].last_name %></p>
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+  
+        .b-example-divider {
+          height: 3rem;
+          background-color: rgba(0, 0, 0, .1);
+          border: solid rgba(0, 0, 0, .15);
+          border-width: 1px 0;
+          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+  
+        .b-example-vr {
+          flex-shrink: 0;
+          width: 1.5rem;
+          height: 100vh;
+        }
+  
+        .bi {
+          vertical-align: -.125em;
+          fill: currentColor;
+        }
+  
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+  
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+      </style>
 
-            <p><b>Email:</b> <%= sugar_bird[0].email %></p>
-
-            <p><b>Phone Number:</b> <%= sugar_bird[0].phone_number %></p>
-
-            <h2>Order details</h2>
-            <p><b># Cookies:</b> <%= sugar_bird[0].num_cookies %></p>
-
-            <p><b>Event:</b> <%= sugar_bird[0].event %></p>
-
-            <p><b>Color:</b> <%= sugar_bird[0].color %></p>
-
-            <p><b>Wording or personalization:</b> <%= sugar_bird[0].personalization %></p>
-
-            <p><b>Questions/comments:</b> <%= sugar_bird[0].questions %></p>
-
-    <form action="/view" method="POST">
-            <input type="hidden" id="order_id" name="order_id" value="<%= sugar_bird[0].order_id %>">
-            <legend>Notes: </legend>
-            <input type="textarea" id="notes" name="notes" value="<%= sugar_bird[0].notes %>">
-            <br>
-            <br>
-            <button type="submit">Save</button>
+</head>
+<body class="bg-light"> 
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h4>Sugar Bird</h4></a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-info" type="submit">Search</button>
+          </form>
         </div>
-    </form>
-    <form action="/orders" method="GET">
-        <br>
-        <br>
-        <button type="submit">back</button>
-    </form>
+      </nav>
+            <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-6">
+                            <div class="col-3 col-md-2 mb-5"></div>
+                            <h1 id="order_id" name="order_id">Request #<%= sugar_bird[0].order_id %></h1>
+                            <hr class="col-3 col-md-2 mb-5">
+        
+                        <div class="col-md-7 col-lg-8">
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <p><b>Pickup Date:</b> <%= sugar_bird[0].pickup_date %></p>
+                                </div>
+
+                            <h3>Contact info</h3>
+        
+                                <div class="col-12">
+                                    <p><b>Name:</b> <%= sugar_bird[0].first_name %> <%= sugar_bird[0].last_name %></p>
+                                </div>
+                                
+                                <div  class="col-12">
+                                    <p><b>Email: </b><a href="mailto:<%= sugar_bird[0].email %>"><%= sugar_bird[0].email %></a></p>
+                                </div>
+        
+                                <div class="col-12">
+                                    <p><b>Phone Number:</b> <%= sugar_bird[0].phone_number %></p>
+                                </div>
+        
+                            <h2>Order details</h2>
+        
+                                <div class="col-12">
+                                    <p><b># Cookies:</b> <%= sugar_bird[0].num_cookies %></p>
+                                </div>
+        
+                                <div class="col-12">
+                                    <p><b>Event:</b> <%= sugar_bird[0].event %></p>
+                                </div>
+        
+                                <div class="col-12">
+                                    <p><b>Color:</b> <%= sugar_bird[0].color %></p>
+                                </div>                       
+        
+                                <div class="col-12">
+                                    <p><b>Wording or personalization:</b> <%= sugar_bird[0].personalization %></p>
+                                </div>
+        
+                                <div class="col-12">
+                                    <p><b>Questions/comments:</b> <%= sugar_bird[0].questions %></p>
+                                </div>
+
+                                <div class="col-12">
+                                    <form action="/view" method="POST">   
+                                        <input type="hidden" id="order_id" name="order_id" value="<%= sugar_bird[0].order_id %>">
+                                        <label for="notes" class="form-label">Notes: </label>
+                                        <textarea class="form-control" id="notes" name="notes" rows="3"><%= sugar_bird[0].notes %></textarea>
+                                            
+                                </div>       
+
+                                        <button class="w-100 btn btn-primary btn-lg" type="submit">Save</button>
+                                        
+                                        <form action="/orders" method="GET">
+                                            <br>
+                                            <br>
+                                            <button class="w-100 btn btn-primary btn-lg" type="submit">back</button>
+                                        </form>
+                                    </form> 
+                        </div>
+                    </div> 
+                </form>
+                <footer class="my-5 pt-5 text-muted text-center text-small">
+                    <p class="mb-1">&copy; 2022 Sugar Bird</p>
+                    <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Privacy</a></li>
+                    <li class="list-inline-item"><a href="#">Terms</a></li>
+                    <li class="list-inline-item"><a href="#">Support</a></li>
+                    </ul>
+                </footer>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
