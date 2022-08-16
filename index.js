@@ -51,12 +51,48 @@ app.post("/", (req,res) =>{
 });
 
 app.get("/thanks", (req,res) => {
-    res.render("thanks");
+    
+    // Sending Emails
+const sendgrid = require('@sendgrid/mail');
+
+const SENDGRID_API_KEY = "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"
+
+sendgrid.setApiKey(SENDGRID_API_KEY)
+
+const msg = {
+   to: 'allison.griffiths00@gmail.com',
+ // Change to your recipient
+   from: 'brandonjosephgriffiths@gmail.com',
+ // Change to your verified sender
+   subject: 'New Order!',
+   text: 'Hey you just got a new order!',
+   html: 'Hey you just got a new order! <a href="/orders" >View Orders</a>',
+}
+sendgrid
+   .send(msg)
+   .then((resp) => {
+     console.log('Email sent\n', resp)
+   })
+   .catch((error) => {
+     console.error(error)
+ })
+
+ res.render("thanks");
+
 });
 
 app.get("/orders", (req, res) => {
     knex.select().from("sugar_bird").orderBy("pickup_date").then(new_order => {
         res.render("orders", {sugar_bird : new_order});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+});
+
+app.get("/table", (req, res) => {
+    knex.select().from("sugar_bird").orderBy("pickup_date").then(new_order => {
+        res.render("table", {sugar_bird : new_order});
     }).catch(err => {
         console.log(err);
         res.status(500).json({err});
@@ -101,6 +137,13 @@ app.post("/delete/:id", (req, res) => {
         res.redirect("/orders");
     });
 });
+
+app.post("/deleteTable/:id", (req, res) => {
+    knex("sugar_bird").where("order_id", req.params.id).del().then(sugar_bird => {
+        res.redirect("/table");
+    });
+});
+
 
 app.use("/assets", express.static(__dirname + "/assets"));
 
