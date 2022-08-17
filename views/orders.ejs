@@ -110,7 +110,10 @@
 
             <div class="card-body">
                 <h5 class="card-title"><%= sugar_bird[iCount].first_name %> <%= sugar_bird[iCount].last_name %></h5>
-                    <p class="card-text"><%= sugar_bird[iCount].pickup_date %></p>
+                  <div class='event' data-date="<%= sugar_bird[iCount].pickup_date %>">
+                    <p><b>Pickup Date:</b><div class="date"></div></p>
+                  </div>
+
                     <p class="card-text"><%= sugar_bird[iCount].phone_number %></p>
                     <p class="card-text"><a href="mailto:<%= sugar_bird[iCount].email %>"><%= sugar_bird[iCount].email %></a></p>
               <div class="d-flex justify-content-between align-items-center">
@@ -136,7 +139,8 @@
 </main>
 
 
-    
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="../js/date.js"></script>
           
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

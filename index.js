@@ -6,8 +6,13 @@ let path = require("path");
 
 const port = 3000;
 
+const dayjs = require('dayjs')
+
 // const port = process.env.PORT || 3001;
 // const knex = require(path.join(__dirname + '/knex/knex.js'));
+
+
+require("dotenv").config({path:__dirname + "/.env"});
 
 app.set('view engine', 'ejs');
 
@@ -51,34 +56,31 @@ app.post("/", (req,res) =>{
 });
 
 app.get("/thanks", (req,res) => {
-    
+    //shows a thank you message
+    res.render("thanks");
+
     // Sending Emails
-const sendgrid = require('@sendgrid/mail');
+    const sendgrid = require('@sendgrid/mail');
 
-const SENDGRID_API_KEY = "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"
+    const apiKey = process.env["API_TOKEN"];
 
-sendgrid.setApiKey(SENDGRID_API_KEY)
+    sendgrid.setApiKey(apiKey)
 
-const msg = {
-   to: 'allison.griffiths00@gmail.com',
- // Change to your recipient
-   from: 'brandonjosephgriffiths@gmail.com',
- // Change to your verified sender
-   subject: 'New Order!',
-   text: 'Hey you just got a new order!',
-   html: 'Hey you just got a new order! <a href="/orders" >View Orders</a>',
-}
-sendgrid
-   .send(msg)
-   .then((resp) => {
-     console.log('Email sent\n', resp)
-   })
-   .catch((error) => {
-     console.error(error)
- })
-
- res.render("thanks");
-
+    const msg = {
+    to: process.env["EMAIL_TO"],
+    from: process.env["EMAIL_FROM"],
+    subject: "New Order!!",
+    text: 'Hey you just got a new order!',
+    html: 'Hey you just got a new order! <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" >View Orders</a>',
+    }
+    sendgrid
+    .send(msg)
+    .then((resp) => {
+        console.log('Email sent\n', resp)
+    })
+    .catch((error) => {
+        console.error(error)
+    })
 });
 
 app.get("/orders", (req, res) => {
@@ -146,5 +148,7 @@ app.post("/deleteTable/:id", (req, res) => {
 
 
 app.use("/assets", express.static(__dirname + "/assets"));
+app.use("/js", express.static(__dirname + "/js"));
+app.use("https://unpkg.com/dayjs@1.8.21/dayjs.min.js", express.static(__dirname + "https://unpkg.com/dayjs@1.8.21/dayjs.min.js"));
 
 app.listen(port, () => console.log("Website is listening"));
