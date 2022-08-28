@@ -66,9 +66,9 @@
       </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #e4cab7;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><h4>Sugar Bird</h4></a>
+          <a class="navbar-brand" href="/"><img src="../assets/navbar_logo.jpg" width="125"></img></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -82,10 +82,11 @@
               </li>
             </ul>
           </div>
-          <form class="d-flex" role="search">
+          <!-- Search bar will be included in V2 -->
+          <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-info" type="submit">Search</button>
-          </form>
+          </form> -->
         </div>
       </nav>
 
@@ -93,12 +94,12 @@
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Order Cards</h1>
-            <p class="lead text-muted">Customer cards with an image uploaded from the customer and quick info about them.</p>
+            <p class="lead text-muted">These cards have quick info about the customer.</p>
           </div>
         </div>
       </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5" style="background-color: #FFF6F0;">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -106,7 +107,6 @@
                     { %>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
             <div class="card-body">
                 <h5 class="card-title"><%= sugar_bird[iCount].first_name %> <%= sugar_bird[iCount].last_name %></h5>

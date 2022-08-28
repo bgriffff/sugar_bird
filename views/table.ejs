@@ -66,55 +66,90 @@
       </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><h4>Sugar Bird</h4></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/orders">Order Cards</a>
-              </li>
-              <li class="nav-item">
-                    <a class="nav-link" href="#">Table</a>
-              </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg" style="background-color: #e4cab7;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="../assets/navbar_logo.jpg" width="125"></img></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/orders">Order Cards</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="/table">Table</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Search bar will be included in V2 -->
+      <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-info" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
+
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Table</h1>
+            <p class="lead text-muted">Best viewed on a computer. This table is meant to show all the data associated with an order.</p>
           </div>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-info" type="submit">Search</button>
-          </form>
         </div>
-      </nav>
+      </section>
 
     <main>
-    <table class="table table-striped table-hover">
-        <thead>
+    <table class="table table-hover" >
+        <thead style="background-color: #e4cab7;">
             <tr>
-                <th scope ="col">Order #</th>
+                <th scope ="col">Order</th>
                 <th scope ="col">Name</th>
-                <th scope ="col">Pickup Date</th>
-                <th scope ="col">Phone Number</th>
+                <th scope ="col">Pickup</th>
+                <th scope ="col">Phone</th>
                 <th scope ="col">Email</th>
+                <th scope ="col">Quantity</th>
+                <th scope ="col">Event</th>
+                <th scope ="col">Theme</th>
+                <th scope ="col">Colors</th>
+                <th scope ="col">Personalization</th>
+                <th scope ="col">Questions</th>
+                <th scope ="col">Notes</th>
                 <th scope ="col">View</th>
                 <th scope ="col">Delete</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: #FFF6F0;">
             <% for(let iCount = 0; iCount < sugar_bird.length; iCount++) 
             { %>
                 <tr>
                     <th scope="row"><%= sugar_bird[iCount].order_id %></th>
                     <td><%= sugar_bird[iCount].first_name %> <%= sugar_bird[iCount].last_name %></td>
+
                     <td> 
                       <div class='event' data-date="<%= sugar_bird[iCount].pickup_date %>">
                           <div class="date"></div>
                       </div>
                     </td>
+
                     <td><%= sugar_bird[iCount].phone_number %></td>
+
                     <td><a href="mailto:<%= sugar_bird[iCount].email %>"><%= sugar_bird[iCount].email %></a></td>
+
+                    <td><%= sugar_bird[iCount].num_cookies %></td>
+
+                    <td><%= sugar_bird[iCount].event %></td>
+
+                    <td><%= sugar_bird[iCount].theme %></td>
+
+                    <td><%= sugar_bird[iCount].colors %></td>
+
+                    <td><%= sugar_bird[iCount].personalization %></td>
+
+                    <td><%= sugar_bird[iCount].questions %></td>
+
+                    <td><%= sugar_bird[iCount].notes %></td>
+
                     <td>
                         <form action="/view/<%= sugar_bird[iCount].order_id %>" method="GET">
                             <button class="btn btn-sm btn-outline-primary" type="submit">View</button>
